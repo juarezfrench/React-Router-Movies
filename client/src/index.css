@@ -21,6 +21,13 @@ body {
   font-size: 0.8rem;
 }
 
+.movie-stars {
+padding-right: 5%;
+margin-right: 1%;
+
+
+}
+
 .saved-list {
   background-color: #fff;
   border: 0;
