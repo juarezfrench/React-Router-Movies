@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+ import { Link } from 'react-router-dom';
 import MovieCard  from './MovieCard.js';
 
 const Movie = (props) => {
 
   const [movie, setMovie] = useState(null);
   console.log('Movie.js -> %cProps:', 'color: violet', props)
-  console.log('Movie', props, props.match.params.id);
+
   const id = props.match.params.id;
 
   console.log('Movie.js -> %cid:', 'color: blue', id)
@@ -38,36 +38,35 @@ const Movie = (props) => {
 
   // return (
   //   <MovieCard movie={movie} {...props} />
-const { title, director, metascore, stars } = movie;
-      
-  return (
+  // [title, director, metascore,stars] = movie
+  
+  return (  // [title, director, metascore,stars] = movie
     <section className="save-wrapper">
       <div className="movie-card">
-        <h2>{title}</h2>
+        <h2>{movie.title}</h2>
        
         <div className="movie-director">
-                                           Director: <em>{director}</em>
+                                           Director: <em>{movie.director}</em>
         </div>
         <div className="movie-metascore">
-          Metascore: <strong>{metascore}</strong>
+          Metascore: <strong>{movie.metascore}</strong>
         </div>
 
         <h3>Actors</h3>
 
-        {stars.map(star => (
-          <MovieCard key={star} className="movie-star">
+        {movie.stars.map(star => (
+          <MovieCard key={movie.star} className="movie-star">
             {star} </MovieCard>
-          
-         
-        ))}
+              ))}
+             <Link to="/">
+   
+             <button Name="save-button">Home</button>
+          </Link>
      
-      <div 
-      // onClick={() =>
-       
-      //   props.addToSavedList(movie)} 
-        className="save-button">Save</div>
-          </div>
-          </section>  
+     
+     
+       </div>
+      </section>  
  
   );
  

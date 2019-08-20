@@ -8,11 +8,13 @@ import MovieCard from './MovieCard';
 
 const MovieList = props =>  {
   const [movies, setMovies] = useState({})
+ 
   useEffect(() => {
     
       axios
         .get('http://localhost:5000/api/movies')
         .then(response => {
+        console.log('MovieList.js -> %cresponse:', 'color: DarkRed', response)
           setMovies(response.data);
           console.log('MovieList.js -> %cresponse.data:', 'color: Chocolate', response.data)
           
@@ -29,17 +31,19 @@ const MovieList = props =>  {
         
   
 
-        
-        const { title, director, metascore, stars } = movies;
- 
+
+        console.log('MovieList.js -> %cmovies:', 'color: Turqoise', movies)
   return (
     
     <div>
       {Array.from(movies).map(movie => (
       <MovieCard
-      key={movie.id} 
-      movie={movie} 
-      title={title}
+      key={movie.id}
+      title={movie.title}
+      metascore={movie.metascore}
+      director={movie.director}
+        movie={movie} 
+      
 
       />
       ))}; 

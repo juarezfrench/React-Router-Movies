@@ -1,18 +1,26 @@
 import React, {useState} from 'react';
-import Movie from './Movie'
+import { Link } from 'react-router-dom';
+// import Movie from './Movie'
 
 
 
 const MovieCard = props => {
+console.log('MovieCard.js -> %cprops:', 'color: Indigo', props)
+
+  
+  // const id = props.match.params.id;
 
 
  console.log('MovieCard.js -> %cprops:', 'color: Teal', props)
 
+ let {title,director, metascore,stars} = props.movie
 
 
   return(
+    <section className = "container">
+      <div className="movie-card">
+    <Link to="/movies/${id)">
 
-  <div className="movie-card">
   <h2>{props.movie.title}</h2>
   <div className="movie-director">
     Director: <em>{props.movie.director}</em>
@@ -24,11 +32,12 @@ const MovieCard = props => {
   <div className="movie-stars">
     <strong>{props.movie.stars}</strong>
   </div>
-<div className="save-wrapper">
-     
-     <div className="save-button">Save</div>
-   </div>
+
+</Link>
 </div>
+
+</section>
+     
 )
 
 };
