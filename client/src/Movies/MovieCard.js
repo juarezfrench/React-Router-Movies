@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
-import Movie from './Movie';
+
 
 
 const MovieCard = props => {
 
-  const [movie, setMovie] = useState(null);
-  const { title, director, metascore, stars } = Movie;
+ let movie = props
+
+  const { title, director, metascore, stars } = movie;
+
+
   return(
 
   <div className="movie-card">
@@ -18,11 +21,6 @@ const MovieCard = props => {
   </div>
   <h3>Actors</h3>
 
-  {stars.map(star => (
-    <div key={star} className="movie-star">
-      {star}
-    </div>
-  ))}
 
 <div className="save-wrapper">
      
