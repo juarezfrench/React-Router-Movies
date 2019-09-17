@@ -29,8 +29,8 @@ const MovieList = props =>  {
   return (
     
     <div>
-      <Link to={`/Movie/${props.id}`}>
       {Array.from(movies).map(movie => (
+      <Link to={`/Movie/${movie.id}`}>
       <MovieCard
       key={movie.id}
       title={movie.title}
@@ -38,9 +38,9 @@ const MovieList = props =>  {
       director={movie.director}
         movie={movie} 
         />
-        
+      </Link>
         ))}; 
-        </Link>
+     
      </div>
      
   )

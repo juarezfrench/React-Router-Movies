@@ -5,38 +5,40 @@ import MovieCard from './MovieCard'
 
 const Movie = (props) => {
   const [movie, setMovie] = useState(null);
-  const id = props.match.params.id;
-
+  
+  
   useEffect(() => {
-
+    
+    const id = props.match.params.id;
     // const id = {id};
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
-
        axios
-        .get(`http://localhost:5000/api/movies/${id}`)
+        .get(`http://localhost:5000/api/${id}`)
         .then(response => {
           setMovie(response.data);
           console.log('Movie.js -> %cresponse.data:', 'color: magenta', response.data)
        
         })
         .catch(error => {
-          console.error(error);
+          
+          // console.error('Data not flowing, check this out:',error);
+          console.error('Movie.js -> %cData not folowing - check this out:', 'color: darkOrchid', error)
         });
 
-  },[id]);
-  console.log('Movie.js -> %cmovie:', 'color: coral', movie)
+  },[props.match.params.id]);
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
+    //   const addToSavedList = props.addToSavedList;
   //   addToSavedList(movie)
   // }
  
-
-  if (!movie) {
+  console.log('Movie.js -> %cmovie:', 'color: darkTurquoise', movie)
+  
+  // if (!movie) {
  
-    return <div>Loading movie information...</div>;
-  }
+  //   return <div>Loading movie information...</div>;
+  // }
 
   // const { title, director, metascore, stars } = movie;
   return (
