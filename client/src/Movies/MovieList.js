@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import MovieCard from './MovieCard';
 
 
@@ -22,20 +22,14 @@ const MovieList = props =>  {
              .catch(error => {
           console.error('Server Error', error);
              })
-
-            
-          }
-       
-
-        ,[])
+            }
+          ,[])
         
-  
-
-
         console.log('MovieList.js -> %cmovies:', 'color: Turqoise', movies)
   return (
     
     <div>
+      <Link to={`/Movie/${props.id}`}>
       {Array.from(movies).map(movie => (
       <MovieCard
       key={movie.id}
@@ -43,16 +37,15 @@ const MovieList = props =>  {
       metascore={movie.metascore}
       director={movie.director}
         movie={movie} 
+        />
+        
+        ))}; 
+        </Link>
+     </div>
+     
+  )
+  
+  }
       
 
-      />
-      ))}; 
-   </div>
-    
-               
-
-  
-)
-
-}
 export default MovieList
